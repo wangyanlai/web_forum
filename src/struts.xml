@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<!-- 告诉struts不用自己创建Action，spring帮你创建 -->
+	<constant name="struts.objectFactory" value="spring"></constant>	
+	<!-- 开启动态方法调用 -->
+	<constant name="struts.devMode" value="true"></constant>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+	<package name="SSH_Forum" namespace="/" extends="struts-default">
+		<!-- 允许全部方法 -->
+		<global-allowed-methods>regex:.*</global-allowed-methods>
+		<action name="UserAction_*" class="cn.com.web.UserAction" method="{1}">
+			<result name="toLogin" type="redirect">/login.jsp</result>
+		</action>
+	</package>
+</struts>
