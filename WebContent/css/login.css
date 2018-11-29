@@ -73,7 +73,7 @@ form{
 .register-box label{
 	height: 52px;
     line-height: 23px;
-    padding-left: 20px;
+    padding-left: 0px;
     display: inline-block;
 }
 .register-box input{

@@ -8,10 +8,9 @@
 		<link rel="stylesheet" type="text/css" href="css/login.css" />
 		<link rel="stylesheet" href="css/head.css" />
 		<style>
-			  .register-box .error {
-				display:none;
-				pidding-left:0px;
-				color:red;
+			   #ii .error {
+				display:inline-block;
+ 				color:red; 
 			}
 		</style>
 		<script src="js/jquery-1.7.2.min.js"></script>
@@ -31,17 +30,25 @@
 					//违反规则，处理方式
 					messages:{
 						"email":{
-							"required":"邮箱不能为空！！！",
+							"required":"邮箱不能为空！",
 							"email":"请输入正确的邮箱！"
 						}
-					}
+					},
+					errorPlacement: function(error, element) { 
+// 					error.appendTo( element.parent().next() ); 
+// 					$(element).closest("form").find("div[id='"]+element.attr("id")+"']").append(error);
+// 					},
+						$( element )
+							.closest( "form" )
+			                    .find( "div[id= ii]" )
+									.append( error );
+				 	}
 				})
 			})
 			
 			$(function(){
-				$("username").blur(function(){
+				$("#username").blur(function(){
 					var usernameInput = $(this).val();
-					alert(usernameInput);
 					$.post(
 						//action的地址
 						"${pageContext.request.contextPath}/UserAction_checkUsername",
@@ -49,7 +56,14 @@
 						{"username":usernameInput},
 						//回调函数
 						function(data){
-							
+							var success = data.success;
+							if(success){
+								$("#usernameInfo").css("color","green");
+								$("#usernameInfo").html("用户名可以使用！");
+							}else{
+								$("#usernameInfo").css("color","red");
+								$("#usernameInfo").html("用户名已经被注册！！！");
+							}
 						},
 						//数据的格式
 						"json"
@@ -67,7 +81,7 @@
 						用 户 名
 						<input id="username" maxlength="20" name="username" type="text" placeholder="您的用户名或登录名" />
 					</label>
-					<div class="tips"></div>
+					<div class="tips" id="usernameInfo"></div>
 				</div>
 				<div class="register-box">
 					<label for="username" class="other_label">
@@ -93,9 +107,9 @@
 				<div class="register-box">
 					<label for="username" class="username_label">
 						邮 箱
-						<input maxlength="20" name="email" type="text" placeholder="您的邮箱" />
+						<input maxlength="30" name="email" type="text" placeholder="您的邮箱" />
 					</label>
-					<div class="tips"><label for="email" class="error">请输入正确的邮箱！</label></div>
+					<div class="tips" id="ii"></div>
 				</div>
 				<div class="register-box">
 					<label for="username" class="username_label">

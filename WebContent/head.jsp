@@ -13,8 +13,8 @@
 	</head>
 	<body>
 		<div class="dvhead">
-			<div class="dvlogo"><a href="index.html">你问我答</a></div>
-			<div class="dvsearch">10秒钟注册账号，找到你的同学</div>
+			<div class="dvlogo"><a href="${pageContext.request.contextPath }/index.jsp" target="_parent">论坛</a></div>
+			<div class="dvsearch">提出你的问题，找到你的同学！！</div>
 			<div class="nav-user">
 				<!--
                   	描述：登录后的样子 
