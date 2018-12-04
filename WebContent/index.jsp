@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -35,121 +36,45 @@
 						<a>已解决</a>
 					</div>
 					<div class="tab">
-						<div class="dvques">
-							<div class="quesCount">
-								<div class="count">8</div>
-								<div class="ques">回答数</div>
-							</div>
-							<div class="quesContent">
-								<div class="quesTitle">500
-									<img src="images/bean.jpg" class="bean">
-									<span class="spanques">Excel开发的问题</span>
+						<s:iterator value="#pastePageBean.list" var="paste">
+							<div class="dvques">
+								<div class="quesCount">
+									<div class="count"><s:property value="#paste.ansnum"/></div>
+									<div class="ques">回答数</div>
 								</div>
-								<div class="qContent">以前都是OWC控件在程序中做Excel做操作以前都是OWC控件在程序中做Excel做操作，主要包裹以前裹做Excel做操作，主要包裹以前都是OWC控件在程序中做Excel做操作，主要包裹主要包裹以前都是主要包中做Excel做操作，主要包裹，主要包裹...</div>
-								<div class="tags">
-									<span class="tag">excel</span>
-									<span class="tag">程序</span>
-								</div>
-								<div class="quesUser">
-									<img src="images/0.gif" class="imguser" />
-									<div class="userName">张大值
-										<div class="liulan">浏览(9) 30分钟前</div>
+								<div class="quesContent">
+									<div class="quesTitle"><s:property value="#paste.offer"/>
+										<img src="images/bean.jpg" class="bean">
+										<span class="spanques"><s:property value="#paste.title"/></span>
+									</div>
+									<div class="qContent" style="width:630px;height:54px;overflow:hidden;white-space:normal;text-overflow:ellipsis"><s:property value="#paste.content"/></div>
+									<div class="tags">
+										<span class="tag">excel</span>
+										<span class="tag">程序</span>
+									</div>  
+									<div class="quesUser" style="margin-top:0px">
+										<img src="${pageContext.request.contextPath }<s:property value="#paste.user.image"/>" class="imguser" />
+										<div class="userName"><s:property value="#paste.user.username"/>
+											<div class="liulan">浏览(<s:property value="#paste.glanceover"/>) <s:property value="#paste.createtime"/></div>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="dvques">
-							<div class="quesCount">
-								<div class="count">8</div>
-								<div class="ques">回答数</div>
-							</div>
-							<div class="quesContent">
-								<div class="quesTitle">500
-									<img src="images/bean.jpg" class="bean" />
-									<span class="spanques">Excel开发的问题</span>
-								</div>
-								<div class="qContent">以前都是OWC控件在程序中做Excel做操作，以前都是OWC控件在程序中做Excel做操作主要包裹以前裹做Excel做操作，主要包裹以前都是OWC控件在程序中做Excel做操作，主要包裹主要包裹以前都是主要包中做Excel做操作，主要包裹，主要包裹...</div>
-								<div class="tags">
-									<span class="tag">excel</span>
-									<span class="tag">程序</span>
-								</div>
-								<div class="quesUser">
-									<img src="images/0.gif" class="imguser" />
-									<div class="userName">张大值
-										<div class="liulan">浏览(9) 30分钟前</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="dvques">
-							<div class="quesCount">
-								<div class="count">8</div>
-								<div class="ques">回答数</div>
-							</div>
-							<div class="quesContent">
-								<div class="quesTitle">500
-									<img src="images/bean.jpg" class="bean">
-									<span class="spanques">Excel开发的问题</span>
-								</div>
-								<div class="qContent">以前都是OWC控件在程序中做Excel做操作，以前都是OWC控件在程序中做Excel做操作主要包裹以前裹做Excel做操作，主要包裹以前都是OWC控件在程序中做Excel做操作，主要包裹主要包裹以前都是主要包中做Excel做操作，主要包裹，主要包裹...</div>
-								<div class="tags">
-									<span class="tag">excel</span>
-									<span class="tag">程序</span>
-								</div>
-								<div class="quesUser">
-									<img src="images/0.gif" class="imguser" />
-									<div class="userName">张大值
-										<div class="liulan">浏览(9) 30分钟前</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="dvques">
-							<div class="quesCount">
-								<div class="count">8</div>
-								<div class="ques">回答数</div>
-							</div>
-							<div class="quesContent">
-								<div class="quesTitle">500
-									<img src="images/bean.jpg" class="bean">
-									<span class="spanques">Excel开发的问题</span>
-								</div>
-								<div class="qContent">以前都是OWC控件在程序中做Excel做操作，以前都是OWC控件在程序中做Excel做操作主要包裹以前裹做Excel做操作，主要包裹以前都是OWC控件在程序中做Excel做操作，主要包裹主要包裹以前都是主要包中做Excel做操作，主要包裹，主要包裹...</div>
-								<div class="tags">
-									<span class="tag">excel</span>
-									<span class="tag">程序</span>
-								</div>
-								<div class="quesUser">
-									<img src="images/0.gif" class="imguser" />
-									<div class="userName">张大值
-										<div class="liulan">浏览(9) 30分钟前</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="dvques">
-							<div class="quesCount">
-								<div class="count">8</div>
-								<div class="ques">回答数</div>
-							</div>
-							<div class="quesContent">
-								<div class="quesTitle">500
-									<img src="images/bean.jpg" class="bean">
-									<span class="spanques">Excel开发的问题</span>
-								</div>
-								<div class="qContent">以前都是OWC控件在程序中做Excel做操作，主要包裹以前裹做Excel做操作，主要包裹以前都是OWC控件在程序中做Excel做操作，主要包裹主要包裹以前都是主要包中做Excel做操作，主要包裹，主要包裹...</div>
-								<div class="tags">
-									<span class="tag">excel</span>
-									<span class="tag">程序</span>
-								</div>
-								<div class="quesUser">
-									<img src="images/0.gif" class="imguser" />
-									<div class="userName">张大值
-										<div class="liulan">浏览(9) 30分钟前</div>
-									</div>
-								</div>
-							</div>
-						</div>
+						</s:iterator>
+						<div style="text-align: center">
+          					<div class="laypage-main">  
+          						<a href="${pageContext.request.contextPath }/GetDataAction_getData?currentPage=<s:property value='#pastePageBean.currentPage - 1'/>" class="laypage-next">上一页</a>
+          						<a href="/jie/page/148/" class="laypage-last" title="尾页">首页</a>
+          						<span class="laypage-curr">1</span>
+          						<a href="/jie/page/2/">2</a>
+          						<a href="/jie/page/3/">3</a>
+          						<a href="/jie/page/4/">4</a>
+          						<a href="/jie/page/5/">5</a>
+          						<span>…</span>
+          						<a href="/jie/page/148/" class="laypage-last" title="尾页">尾页</a>
+          						<a href="${pageContext.request.contextPath }/GetDataAction_getData?currentPage=<s:property value='#pastePageBean.currentPage + 1'/>" class="laypage-next">下一页</a>
+          					</div>
+       					</div>
 					</div>
 					<div class="tab hidden">2</div>
 					<div class="tab hidden">3</div>
@@ -159,7 +84,7 @@
 			
 			<div class="dvquesright">
 				<div>
-					<button class="btnques" onclick="location.href='add.html'">提个问题</button>
+					<button class="btnques" onclick="location.href='${pageContext.request.contextPath }/add.jsp'">提个问题</button>
 				</div>
 				<div class="dvorder">
 					<dl class="fly-panel fly-list-one">

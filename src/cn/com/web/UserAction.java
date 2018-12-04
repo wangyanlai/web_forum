@@ -1,5 +1,6 @@
 package cn.com.web;
 
+import java.util.Random;
 import java.util.UUID;
 
 import org.apache.struts2.ServletActionContext;
@@ -21,6 +22,8 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	public String login() throws Exception {
 		int success = userService.checkUser(user);
 		if(success == 0) {
+			User temp = userService.findUserByUsernameResultUser(user);
+			ActionContext.getContext().getSession().put("user", temp);
 			return "toIndex";
 		}else if(success == 1) {
 			ActionContext.getContext().put("error", "用户名不存在!");
@@ -34,6 +37,10 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		}else {
 			return "error";
 		}
+	}
+	public String logout() throws Exception {
+		ActionContext.getContext().getSession().remove("user");
+		return "toLogin";
 	}
 	//激活邮箱
 	public String active() throws Exception {
@@ -51,7 +58,8 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		//手动封装没有的属性
 		user.setState(0);
 		user.setCode(UUID.randomUUID().toString());
-		user.setImage("0");
+		Random ran = new Random();		
+		user.setImage("/images/"+ran.nextInt(21)+".gif");
 		user.setLevel(1);
 		user.setCoin(1000);
 		userService.addUser(user);

@@ -18,5 +18,12 @@
 			<result name="error">/login.jsp</result>
 			<result name="toRegisterSuccess" type="redirect">/registerSuccess.jsp</result>
 		</action>
+		<action name="PasteAction_*" class="cn.com.web.PasteAction" method="{1}">
+			<result name="toIndex" type="redirect">/index.jsp</result>
+			<result name="error">/login.jsp</result>
+		</action>
+		<action name="GetDataAction_*" class="cn.com.web.GetDataAction" method="{1}">
+			<result name="index">/index.jsp</result>
+		</action>
 	</package>
 </struts>

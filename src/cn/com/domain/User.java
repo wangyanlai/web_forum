@@ -1,5 +1,8 @@
 package cn.com.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class User {
 	private String id;
 	private String username;
@@ -12,6 +15,13 @@ public class User {
 	private String image;
 	private Integer level;
 	private Integer coin;
+	private Set<Paste> pasteSet = new HashSet<Paste>();
+	public Set<Paste> getPasteSet() {
+		return pasteSet;
+	}
+	public void setPasteSet(Set<Paste> pasteSet) {
+		this.pasteSet = pasteSet;
+	}
 	public String getId() {
 		return id;
 	}

@@ -7,12 +7,14 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="css/head.css" />
 		<link rel="stylesheet" type="text/css" href="css/login.css" />
+		<script src="js/jquery-1.7.2.min.js"></script>
+		<script src="js/jquery.validate.min.js"></script>
 		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body style="margin: -2px">
 		<iframe src="head.jsp" scrolling="no" width="100%" height="100%"></iframe>
 		<section class="sec">
-			<form action="${pageContext.request.contextPath }/UserAction_login" method="post">
+			<form action="${pageContext.request.contextPath }/UserAction_login?" method="post">
 				<div class="register-box">
 					<label for="username" class="username_label">
 						用 户 名
@@ -31,7 +33,7 @@
 					<input type="checkbox" id="xieyi" />
 					阅读并同意
 					<a href="javascript:void(0)">《你问我答用户注册协议》</a>
-					<a href="register.html">没有账号,立即注册</a>
+					<a href="register.jsp">没有账号,立即注册</a>
 					<div class="tips"> <font color="red"><s:property value="#error"/></font> </div>
 				</div>
 				<div class="submit_btn">

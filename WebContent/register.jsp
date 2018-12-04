@@ -122,7 +122,7 @@
 					<input type="checkbox" id="xieyi" />
 					阅读并同意
 					<a href="javascript:void(0)">《错题用户注册协议》</a>
-					<a href="login.html">已有账号,立即登录</a>
+					<a href="login.jsp">已有账号,立即登录</a>
 					<div class="tips"></div>
 				</div>
 				<div class="submit_btn">

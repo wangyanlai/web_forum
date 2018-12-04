@@ -17,5 +17,9 @@
 		<property name="image" column="image"></property>
 		<property name="level" column="level"></property>
 		<property name="coin" column="coin"></property>
+		<set name="pasteSet">
+			<key column="userid"></key>
+			<one-to-many class="Paste" />
+		</set>
 	</class>
 </hibernate-mapping>
