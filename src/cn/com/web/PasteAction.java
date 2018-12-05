@@ -15,6 +15,7 @@ public class PasteAction extends ActionSupport implements ModelDriven<Paste>{
 	private static final long serialVersionUID = 1L;
 	private Paste paste = new Paste();
 	private PasteService pasteService;
+	private String pasteid;
 	public String addPaste() throws Exception {
 		User user = (User) ActionContext.getContext().getSession().get("user");
 		if(user == null) {
@@ -32,6 +33,11 @@ public class PasteAction extends ActionSupport implements ModelDriven<Paste>{
 		pasteService.addPaste(paste);
 		return "toIndex";
 	}
+	public String getDetail() throws Exception {
+		Paste paste = pasteService.findPasteByIdReturnPaste(pasteid);
+		ActionContext.getContext().put("paste", paste);
+		return "detail";
+	}
 	@Override
 	public Paste getModel() {
 		// TODO Auto-generated method stub
@@ -42,5 +48,11 @@ public class PasteAction extends ActionSupport implements ModelDriven<Paste>{
 	}
 	public void setPasteService(PasteService pasteService) {
 		this.pasteService = pasteService;
+	}
+	public String getPasteid() {
+		return pasteid;
+	}
+	public void setPasteid(String pasteid) {
+		this.pasteid = pasteid;
 	}
 }

@@ -1,10 +1,21 @@
 package cn.com.service;
 
+import java.util.List;
+
 import cn.com.dao.UserDao;
+import cn.com.domain.Paste;
 import cn.com.domain.User;
+import cn.com.utils.PageBean;
 
 public class UserService {
 	private UserDao userDao;
+	public PageBean getUserPageBean(Integer currentPage) {
+		Integer totalCount = userDao.findAllUserNum();
+		PageBean userPageBean = new PageBean(currentPage,totalCount,8);
+		List<User> list = userDao.getUserPageList();
+		userPageBean.setList(list);
+		return userPageBean;
+	}
 	//用户登录验证
 	public int checkUser(User user) {
 		User temp = userDao.findUserByUsernameResultUser(user);

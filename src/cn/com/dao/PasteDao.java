@@ -32,6 +32,31 @@ public class PasteDao extends HibernateDaoSupport{
 		List list = query.list();
 		return list;
 	}
+	public List<Paste> getGlanceoverPageList() {
+		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
+		String sql = "select * from paste order by glanceover desc limit 0,8";
+		NativeQuery query = session.createSQLQuery(sql);
+		query.addEntity(Paste.class);
+		List list = query.list();
+		return list;
+	}
+	public List<Paste> getAnsnumPageList() {
+		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
+		String sql = "select * from paste order by ansnum desc limit 0,8";
+		NativeQuery query = session.createSQLQuery(sql);
+		query.addEntity(Paste.class);
+		List list = query.list();
+		return list;
+	}
+	public Paste findPasteByIdReturnPaste(String pasteid) {
+		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
+		String sql = "select * from paste where id = ?";
+		NativeQuery query = session.createSQLQuery(sql);
+		query.addEntity(Paste.class);
+		query.setParameter(1, pasteid);
+		Paste paste = (Paste) query.uniqueResult();
+		return paste;
+	}
 //	public List<Paste> findAllPaste() {
 //		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
 //		String hql = "from cn.com.domain.Paste";

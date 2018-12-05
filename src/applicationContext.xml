@@ -61,6 +61,7 @@
 	</bean>
 	<bean name="getDataAction" class="cn.com.web.GetDataAction" scope="prototype">
 		<property name="pasteService" ref="pasteService"></property>
+		<property name="userService" ref="userService"></property>
 	</bean>
 	<!-- 配置Service -->
 	<bean name="userService" class="cn.com.service.UserService">
