@@ -10,12 +10,14 @@ import com.opensymphony.xwork2.ModelDriven;
 import cn.com.domain.Paste;
 import cn.com.domain.User;
 import cn.com.service.PasteService;
+import cn.com.utils.PageBean;
 
 public class PasteAction extends ActionSupport implements ModelDriven<Paste>{
 	private static final long serialVersionUID = 1L;
 	private Paste paste = new Paste();
 	private PasteService pasteService;
 	private String pasteid;
+	//添加帖子
 	public String addPaste() throws Exception {
 		User user = (User) ActionContext.getContext().getSession().get("user");
 		if(user == null) {
@@ -33,9 +35,16 @@ public class PasteAction extends ActionSupport implements ModelDriven<Paste>{
 		pasteService.addPaste(paste);
 		return "toIndex";
 	}
+	//帖子详情
 	public String getDetail() throws Exception {
 		Paste paste = pasteService.findPasteByIdReturnPaste(pasteid);
 		ActionContext.getContext().put("paste", paste);
+		//得到最近热帖
+		PageBean glanceoverPageBean = pasteService.getGlanceoverPageBean(null);
+		ActionContext.getContext().put("glanceoverPageBean", glanceoverPageBean);
+		//得到最近热议
+		PageBean ansnumPageBean = pasteService.getAnsnumPageBean(null);
+		ActionContext.getContext().put("ansnumPageBean", ansnumPageBean);
 		return "detail";
 	}
 	@Override

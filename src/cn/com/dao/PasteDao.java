@@ -10,11 +10,12 @@ import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import cn.com.domain.Paste;
 
 public class PasteDao extends HibernateDaoSupport{
-
+	//添加帖子
 	public void addPaste(Paste paste) {
 		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
 		session.save(paste);
 	}
+	//得到帖子总数
 	public Integer findAllPasteNum() {
 		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
 		String sql = "select count(*) from paste";
@@ -22,6 +23,7 @@ public class PasteDao extends HibernateDaoSupport{
 		BigInteger result = (BigInteger) query.uniqueResult();
 		return result.intValue();
 	}
+	//得到帖子
 	public List<Paste> getPastePageList(Integer start, Integer pageSize) {
 		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
 		String sql = "select * from paste limit ?,?";
@@ -32,6 +34,7 @@ public class PasteDao extends HibernateDaoSupport{
 		List list = query.list();
 		return list;
 	}
+	//得到最近热帖
 	public List<Paste> getGlanceoverPageList() {
 		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
 		String sql = "select * from paste order by glanceover desc limit 0,8";
@@ -40,6 +43,7 @@ public class PasteDao extends HibernateDaoSupport{
 		List list = query.list();
 		return list;
 	}
+	//得到最近热议
 	public List<Paste> getAnsnumPageList() {
 		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
 		String sql = "select * from paste order by ansnum desc limit 0,8";
@@ -48,6 +52,7 @@ public class PasteDao extends HibernateDaoSupport{
 		List list = query.list();
 		return list;
 	}
+	//得到帖子详情
 	public Paste findPasteByIdReturnPaste(String pasteid) {
 		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
 		String sql = "select * from paste where id = ?";

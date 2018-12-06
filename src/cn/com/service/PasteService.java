@@ -8,12 +8,17 @@ import cn.com.utils.PageBean;
 
 public class PasteService {
 	private PasteDao pasteDao;
+	//添加帖子
 	public void addPaste(Paste paste) {
 		pasteDao.addPaste(paste);
 	}
-	public Paste findPasteByIdReturnPaste(String pasteid) {		
-		return pasteDao.findPasteByIdReturnPaste(pasteid);
+	//帖子详情
+	public Paste findPasteByIdReturnPaste(String pasteid) {	
+		Paste paste = pasteDao.findPasteByIdReturnPaste(pasteid);
+		paste.setGlanceover(paste.getGlanceover()+1);
+		return paste;
 	}
+	//得到帖子
 	public PageBean getPastePageBean(Integer currentPage) {
 		Integer totalCount = pasteDao.findAllPasteNum();
 		PageBean pageBean = new PageBean(currentPage,totalCount,8);
@@ -21,6 +26,7 @@ public class PasteService {
 		pageBean.setList(list);
 		return pageBean;
 	}
+	//最近热帖
 	public PageBean getGlanceoverPageBean(Integer currentPage) {
 		Integer totalCount = pasteDao.findAllPasteNum();
 		PageBean glanceoverPageBean = new PageBean(currentPage,totalCount,8);
@@ -28,6 +34,7 @@ public class PasteService {
 		glanceoverPageBean.setList(list);
 		return glanceoverPageBean;
 	}
+	//最近热议
 	public PageBean getAnsnumPageBean(Integer currentPage) {
 		Integer totalCount = pasteDao.findAllPasteNum();
 		PageBean ansnumPageBean = new PageBean(currentPage,totalCount,8);

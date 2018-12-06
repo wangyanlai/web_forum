@@ -16,6 +16,7 @@ public class User {
 	private Integer level;
 	private Integer coin;
 	private Set<Paste> pasteSet = new HashSet<Paste>();
+	private Set<Paste> answerPasteSet = new HashSet<Paste>();
 	public Set<Paste> getPasteSet() {
 		return pasteSet;
 	}
@@ -87,6 +88,12 @@ public class User {
 	}
 	public void setCoin(Integer coin) {
 		this.coin = coin;
+	}
+	public Set<Paste> getAnswerPasteSet() {
+		return answerPasteSet;
+	}
+	public void setAnswerPasteSet(Set<Paste> answerPasteSet) {
+		this.answerPasteSet = answerPasteSet;
 	}
 	@Override
 	public String toString() {

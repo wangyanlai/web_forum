@@ -21,5 +21,9 @@
 			<key column="userid"></key>
 			<one-to-many class="Paste" />
 		</set>
+		<set name="answerPasteSet">
+			<key column="pasteid"></key>
+			<one-to-many class="Answer"/>
+		</set>
 	</class>
 </hibernate-mapping>

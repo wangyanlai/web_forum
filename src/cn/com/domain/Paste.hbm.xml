@@ -16,5 +16,9 @@
 		<property name="solve" column="solve"></property>
 		<property name="isdelete" column="isdelete"></property>
 		<many-to-one name="user" class="User" column="userid" insert="true"></many-to-one>
+		<set name="userAnswerSet">
+			<key column="userid"></key>
+			<one-to-many class="Answer"/>
+		</set>
 	</class>
 </hibernate-mapping>

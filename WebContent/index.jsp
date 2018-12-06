@@ -115,7 +115,9 @@
 						<dt class="fly-panel-title">最近热帖</dt>
 						<s:iterator value="#glanceoverPageBean.list" var="paste">
 							<dd>
-								<a href=""> <s:property value="#paste.title"/> </a>
+								<a href="${pageContext.request.contextPath }/PasteAction_getDetail?pasteid=<s:property value="#paste.id"/>">
+									<s:property value="#paste.title"/> 
+								</a>
 								<span>
 									<i class="iconfont">&#xe60b;</i>
 									<s:property value="#paste.glanceover"/> </a>
@@ -127,7 +129,9 @@
 						<dt class="fly-panel-title">近期热议</dt>
 						<s:iterator value="#ansnumPageBean.list" var="paste">
 							<dd>
-								<a href=""> <s:property value="#paste.title"/> </a>
+								<a href="${pageContext.request.contextPath }/PasteAction_getDetail?pasteid=<s:property value="#paste.id"/>"> 
+									<s:property value="#paste.title"/> 
+								</a>
 								<span>
 									<i class="iconfont">&#xe60c;</i>
 									<s:property value="#paste.ansnum"/>

@@ -1,4 +1,4 @@
-$(function(){
+$(function() {
 	var stuList = getStuList();//设置传送信息：学生的集合
 	 
 	//聚焦失焦input
@@ -133,5 +133,4 @@ $(function(){
 	        return new Array();
 	    }
 	}
-
 })

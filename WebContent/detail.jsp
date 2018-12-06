@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
@@ -158,105 +159,31 @@
 			<div class="edge">
 				<dl class="fly-panel fly-list-one">
 					<dt class="fly-panel-title">最近热帖</dt>
-					<dd>
-						<a href="">使用 layui 秒搭后台大布局（基本结构）</a>
-						<span>
-							<i class="iconfont">&#xe60b;</i>6087
-						</span>
-					</dd>
-					<dd>
-						<a href="">Java实现LayIM后端的核心代码</a>
-						<span>
-							<i class="iconfont">&#xe60b;</i>767
-						</span>
-					</dd>
-					<dd>
-						<a href="">使用 layui 秒搭后台大布局（基本结构）</a>
-						<span>
-							<i class="iconfont">&#xe60b;</i>6087
-						</span>
-					</dd>
-					<dd>
-						<a href="">Java实现LayIM后端的核心代码</a>
-						<span>
-							<i class="iconfont">&#xe60b;</i>767
-						</span>
-					</dd>
-					<dd>
-						<a href="">使用 layui 秒搭后台大布局（基本结构）</a>
-						<span>
-							<i class="iconfont">&#xe60b;</i>6087
-						</span>
-					</dd>
-					<dd>
-						<a href="">Java实现LayIM后端的核心代码</a>
-						<span>
-							<i class="iconfont">&#xe60b;</i>767
-						</span>
-					</dd>
-					<dd>
-						<a href="">使用 layui 秒搭后台大布局（基本结构）</a>
-						<span>
-							<i class="iconfont">&#xe60b;</i>6087
-						</span>
-					</dd>
-					<dd>
-						<a href="">Java实现LayIM后端的核心代码</a>
-						<span>
-							<i class="iconfont">&#xe60b;</i>767
-						</span>
-					</dd>
+					<s:iterator value="#glanceoverPageBean.list" var="paste">
+						<dd>
+							<a href="${pageContext.request.contextPath }/PasteAction_getDetail?pasteid=<s:property value="#paste.id"/>">
+								<s:property value="#paste.title"/>
+							</a>
+							<span>
+								<i class="iconfont">&#xe60b;</i>
+								<s:property value="#paste.glanceover"/>
+							</span>
+						</dd>
+					</s:iterator>
 				</dl>	
 				<dl class="fly-panel fly-list-one">
 					<dt class="fly-panel-title">近期热议</dt>
-					<dd>
-						<a href="">使用 layui 秒搭后台大布局之基本结构</a>
-						<span>
-							<i class="iconfont">&#xe60c;</i>96
-						</span>
-					</dd>
-					<dd>
-						<a href="">使用 layui 秒搭后台大布局之基本结构</a>
-						<span>
-							<i class="iconfont">&#xe60c;</i>96
-						</span>
-					</dd>
-					<dd>
-						<a href="">使用 layui 秒搭后台大布局之基本结构</a>
-						<span>
-							<i class="iconfont">&#xe60c;</i>96
-						</span>
-					</dd>
-					<dd>
-						<a href="">使用 layui 秒搭后台大布局之基本结构</a>
-						<span>
-							<i class="iconfont">&#xe60c;</i>96
-						</span>
-					</dd>
-					<dd>
-						<a href="">使用 layui 秒搭后台大布局之基本结构</a>
-						<span>
-							<i class="iconfont">&#xe60c;</i>96
-						</span>
-					</dd>
-					<dd>
-						<a href="">使用 layui 秒搭后台大布局之基本结构</a>
-						<span>
-							<i class="iconfont">&#xe60c;</i>96
-						</span>
-					</dd>
-					<dd>
-						<a href="">使用 layui 秒搭后台大布局之基本结构</a>
-						<span>
-							<i class="iconfont">&#xe60c;</i>96
-						</span>
-					</dd>
-					<dd>
-						<a href="">使用 layui 秒搭后台大布局之基本结构</a>
-						<span>
-							<i class="iconfont">&#xe60c;</i>96
-						</span>
-					</dd>
+					<s:iterator value="#ansnumPageBean.list" var="paste">
+						<dd>
+							<a href="${pageContext.request.contextPath }/PasteAction_getDetail?pasteid=<s:property value="#paste.id"/>">
+								<s:property value="#paste.title"/>
+							</a>
+							<span>
+								<i class="iconfont">&#xe60c;</i>
+								<s:property value="#paste.ansnum"/>
+							</span>
+						</dd>
+					</s:iterator>
 				</dl>
 			</div>
 		</div>

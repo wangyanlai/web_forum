@@ -1,5 +1,8 @@
 package cn.com.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Paste {
 	private String id;
 	private String title;
@@ -11,6 +14,7 @@ public class Paste {
 	private Integer solve;
 	private Integer isdelete;
 	private User user;
+	private Set<User> userAnswerSet = new HashSet<User>();
 	public String getId() {
 		return id;
 	}
@@ -70,5 +74,11 @@ public class Paste {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public Set<User> getUserAnswerSet() {
+		return userAnswerSet;
+	}
+	public void setUserAnswerSet(Set<User> userAnswerSet) {
+		this.userAnswerSet = userAnswerSet;
 	}
 }

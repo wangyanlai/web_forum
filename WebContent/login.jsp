@@ -7,8 +7,6 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="css/head.css" />
 		<link rel="stylesheet" type="text/css" href="css/login.css" />
-		<script src="js/jquery-1.7.2.min.js"></script>
-		<script src="js/jquery.validate.min.js"></script>
 		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body style="margin: -2px">
