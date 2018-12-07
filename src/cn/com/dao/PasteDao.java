@@ -15,6 +15,14 @@ public class PasteDao extends HibernateDaoSupport{
 		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
 		session.save(paste);
 	}
+	public void solvePasteByIdAndAnswerid(String pasteid, String answerid) {
+		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
+		String sql = "update paste set solve = 1, answerid = ? where id = ?";
+		NativeQuery query = session.createSQLQuery(sql);
+		query.setParameter(1, answerid);
+		query.setParameter(2, pasteid);
+		query.executeUpdate();
+	}
 	//得到帖子总数
 	public Integer findAllPasteNum() {
 		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();

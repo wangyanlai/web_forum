@@ -14,7 +14,7 @@
 	</head>
 	<body>
 		<div class="dvhead">
-			<div class="dvlogo"><a href="${pageContext.request.contextPath }/GetDataAction_getData" target="_parent">论 坛</a></div>
+			<div class="dvlogo"><a href="${pageContext.request.contextPath }/default.jsp" target="_parent">论 坛</a></div>
 			<div class="dvsearch">提出你的问题，找到你的同学！！</div>
 			<div class="nav-user">
 				<s:if test="#session.user != null">

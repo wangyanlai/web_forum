@@ -2,13 +2,16 @@ package cn.com.web;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import cn.com.domain.Answer;
 import cn.com.domain.Paste;
 import cn.com.domain.User;
+import cn.com.service.AnswerService;
 import cn.com.service.PasteService;
 import cn.com.utils.PageBean;
 
@@ -16,6 +19,7 @@ public class PasteAction extends ActionSupport implements ModelDriven<Paste>{
 	private static final long serialVersionUID = 1L;
 	private Paste paste = new Paste();
 	private PasteService pasteService;
+	private AnswerService answerService;
 	private String pasteid;
 	//添加帖子
 	public String addPaste() throws Exception {
@@ -35,10 +39,19 @@ public class PasteAction extends ActionSupport implements ModelDriven<Paste>{
 		pasteService.addPaste(paste);
 		return "toIndex";
 	}
+	public String solvePaste() throws Exception {
+		pasteService.solvePasteByIdAndAnswerid(pasteid,paste.getAnswerid());
+		ActionContext.getContext().put("pasteid", pasteid);
+		return "toDetail";
+	}
 	//帖子详情
 	public String getDetail() throws Exception {
+		//得到帖子
 		Paste paste = pasteService.findPasteByIdReturnPaste(pasteid);
 		ActionContext.getContext().put("paste", paste);
+		//得到该帖子的回复
+		List<Answer> answerList = answerService.findAnswerByPasteid(pasteid);
+		ActionContext.getContext().put("answerList", answerList);
 		//得到最近热帖
 		PageBean glanceoverPageBean = pasteService.getGlanceoverPageBean(null);
 		ActionContext.getContext().put("glanceoverPageBean", glanceoverPageBean);
@@ -57,6 +70,12 @@ public class PasteAction extends ActionSupport implements ModelDriven<Paste>{
 	}
 	public void setPasteService(PasteService pasteService) {
 		this.pasteService = pasteService;
+	}
+	public AnswerService getAnswerService() {
+		return answerService;
+	}
+	public void setAnswerService(AnswerService answerService) {
+		this.answerService = answerService;
 	}
 	public String getPasteid() {
 		return pasteid;

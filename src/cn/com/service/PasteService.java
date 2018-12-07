@@ -18,6 +18,15 @@ public class PasteService {
 		paste.setGlanceover(paste.getGlanceover()+1);
 		return paste;
 	}
+	//只为取得paste作为参数
+	public Paste findPasteById(String pasteid) {	
+		Paste paste = pasteDao.findPasteByIdReturnPaste(pasteid);
+		return paste;
+	}
+	//解决帖子
+	public void solvePasteByIdAndAnswerid(String pasteid, String answerid) {
+		pasteDao.solvePasteByIdAndAnswerid(pasteid,answerid);		
+	}
 	//得到帖子
 	public PageBean getPastePageBean(Integer currentPage) {
 		Integer totalCount = pasteDao.findAllPasteNum();

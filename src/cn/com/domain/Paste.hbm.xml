@@ -15,6 +15,7 @@
 		<property name="glanceover" column="glanceover"></property>
 		<property name="solve" column="solve"></property>
 		<property name="isdelete" column="isdelete"></property>
+		<property name="answerid" column="answerid"></property>
 		<many-to-one name="user" class="User" column="userid" insert="true"></many-to-one>
 		<set name="userAnswerSet">
 			<key column="userid"></key>

@@ -67,7 +67,7 @@
           					<div class="laypage-main">  
           						<a href="${pageContext.request.contextPath }/GetDataAction_getData?currentPage=<s:property value='#pastePageBean.currentPage - 1'/>" class="laypage-next">上一页</a>
           						<a href="${pageContext.request.contextPath }/GetDataAction_getData?cutrrentPage=1" class="laypage-last" title="尾页">首页</a>
-          						<s:if test="$pastePageBean.currentPage>3">
+          						<s:if test="#pastePageBean.currentPage>3">
           							<span>…</span>
           						</s:if>
           						<s:if test="#pastePageBean.currentPage-2>0">

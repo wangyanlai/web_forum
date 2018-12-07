@@ -18,7 +18,7 @@ public class Answer {
 		return content;
 	}
 	public void setContent(String content) {
-		this.content = content;
+		this.content = content.replaceAll("<br/>", ".");
 	}
 	public String getAnstime() {
 		return anstime;

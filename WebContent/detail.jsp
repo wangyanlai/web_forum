@@ -74,15 +74,15 @@
 					<div class="fly-panel detail-box" style="padding-top: 0;">
 						<a name="comment"></a>
 						<ul class="jieda photos" id="jieda">
-							<li data-id="12" class="jieda-daan">
+							<!-- <li data-id="12" class="jieda-daan">
 								<a name="item-121212121212"></a>
 								<div class="detail-about detail-about-reply">
 									<a class="jie-user" href="">
 										<img src="res/images/uer.jpg" alt="">
 										<cite>
 											<i>纸飞机</i>
-											<!-- <em>(楼主)</em>
-	                  							<em style="color:#5FB878">(管理员)</em> -->
+											<em>(楼主)</em>
+	                  						<em style="color:#5FB878">(管理员)</em>
 										</cite>
 									</a>
 									<div class="detail-hits">
@@ -98,57 +98,69 @@
 										<i class="iconfont icon-zan"></i>
 										<em>12</em>
 									</span>
-									<!-- <div class="jieda-admin">
+									<div class="jieda-admin">
 						                <span type="del">删除</span>
 						                <span class="jieda-accept" type="accept">采纳</span>
-						              	</div> -->
+						            </div> 
 								</div>
-							</li>
-							<li data-id="13">
-								<a name="item-121212121212"></a>
-								<div class="detail-about detail-about-reply">
-									<a class="jie-user" href="">
-										<img src="res/images/uer.jpg" alt="">
-										<cite>
-											<i>香菇</i>
-											<em style="color: #FF9E3F">活雷锋</em>
-										</cite>
-									</a>
-									<div class="detail-hits">
-										<span>刚刚</span>
+							</li>   -->
+							<s:iterator value="#answerList" var="answer">
+								<li data-id="13">
+									<a name="item-121212121212"></a>
+									<div class="detail-about detail-about-reply">
+										<a class="jie-user" href="">
+											<img src="${pageContext.request.contextPath }<s:property value="#answer.user.image"/>" alt="">
+											<cite>
+												<i><s:property value="#answer.user.username"/></i>
+												<em style="color: #FF9E3F">活雷锋</em>
+											</cite>
+										</a>
+										<div class="detail-hits">
+											<span><s:property value="#answer.anstime"/></span>
+										</div>
 									</div>
-								</div>
-								<div class="detail-body jieda-body">
-									<p>蓝瘦</p>
-								</div>
-								<div class="jieda-reply">
-									<span class="jieda-zan" type="zan">
-										<i class="iconfont icon-zan"></i>
-										<em>0</em>
-									</span>
-									<div class="jieda-admin">
-										<span type="del">
-											<a href="#" class="layui-btn layui-btn-danger layui-btn-small">删除</a>
-										</span>
-										<span class="jieda-accept" type="accept">
-											<a href="#" class="layui-btn  layui-btn-small">采纳</a>
-										</span>
+									<div class="detail-body jieda-body">
+										<p><s:property value="#answer.content"/></p>
 									</div>
-								</div>
-							</li>	
-							<!-- <li class="fly-none">没有任何回答</li> -->
+									<div class="jieda-reply">
+										<span class="jieda-zan" type="zan">
+											<i class="iconfont icon-zan"></i>
+											<em><s:property value="#answer.agree"/></em>
+										</span>
+										<div class="jieda-admin">
+											<s:if test="#session.user.username == #answer.user.username">
+												<span type="del">
+													<a href="${pageContext.request.contextPath }/AnswerAction_deleteAnswer?answerid=<s:property value="#answer.id"/>&pasteid=<s:property value="#paste.id"/>" class="layui-btn layui-btn-danger layui-btn-small">删除</a>
+												</span>
+											</s:if>
+											<s:if test="#session.user.username == #paste.user.username">
+												<span class="jieda-accept" type="accept">
+													<a href="${pageContext.request.contextPath }/PasteAction_solvePaste?answerid=<s:property value="#answer.id"/>&pasteid=<s:property value="#paste.id"/>" class="layui-btn  layui-btn-small">采纳</a>
+												</span>
+											</s:if>
+										</div>
+									</div>
+								</li>
+							</s:iterator>
+							<s:if test="#answerList.size()==0">
+								<li class="fly-none">没有任何回答</li>
+							</s:if>
 						</ul>
-						<span id="toName">@ 压缩(楼主)</span>
 						<div class="layui-form layui-form-pane">
-							<form action="">
+							<form action="${pageContext.request.contextPath }/AnswerAction_addAnswer" method="post">
+								<input type="hidden" name="pasteid" value="<s:property value='#paste.id'/>"/>
+								<label for="L_title" class="layui-form-label" style="width:690px;hight:40px">
+									<div style="margin-left:-590px">回复楼主：</div>
+								</label>
 								<div class="layui-form-item layui-form-text">
 									<div class="layui-input-block">
-										<textarea id="L_content" name="content" required lay-verify="required" placeholder="我要回答" class="layui-textarea fly-editor"
-											style="height: 150px;"></textarea>
+										<div class="editor">
+											<textarea id="content" name="content" style="width: 690px; height: 250px; visibility: hidden;"></textarea>
+										</div>
 									</div>
 								</div>
 								<div class="layui-form-item">
-									<button class="layui-btn" lay-filter="*" lay-submit>提交回答</button>
+									<button class="layui-btn" lay-filter="*" lay-submit>立即发布</button>
 								</div>
 							</form>
 						</div>
@@ -187,16 +199,33 @@
 				</dl>
 			</div>
 		</div>
-		<script type="text/javascript" charset="utf-8" src="res/js/kindeditor.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/kindeditor.js"></script>
 		<script type="text/javascript">
 			KE.show({
-				id : 'L_content',
+				id : 'content',
 				resizeMode : 1,
+				cssPath : './index.css',
 				items : [ 'fontname', 'fontsize', 'textcolor', 'bgcolor', 'bold',
 						'italic', 'underline', 'removeformat', 'justifyleft',
 						'justifycenter', 'justifyright', 'insertorderedlist',
 						'insertunorderedlist', 'emoticons', 'image', 'link' ]
 			});
+		</script>
+		<script>
+			layui.cache.page = '';
+			layui.cache.user = {
+				username : '游客',
+				uid : -1,
+				avatar : '../res/images/avatar/00.jpg',
+				experience : 83,
+				sex : '男'
+			};
+			layui.config({
+				version : "2.0.0",
+				base : '../res/mods/'
+			}).extend({
+				fly : 'index'
+			}).use('fly');
 		</script>
 	</body>
 </html>

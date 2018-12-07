@@ -58,10 +58,15 @@
 	</bean>
 	<bean name="pasteAction" class="cn.com.web.PasteAction" scope="prototype">
 		<property name="pasteService" ref="pasteService"></property>
+		<property name="answerService" ref="answerService"></property>
 	</bean>
 	<bean name="getDataAction" class="cn.com.web.GetDataAction" scope="prototype">
 		<property name="pasteService" ref="pasteService"></property>
 		<property name="userService" ref="userService"></property>
+	</bean>
+	<bean name="answerAction" class="cn.com.web.AnswerAction" scope="prototype">
+		<property name="answerService" ref="answerService"></property>
+		<property name="pasteService" ref="pasteService"></property>
 	</bean>
 	<!-- 配置Service -->
 	<bean name="userService" class="cn.com.service.UserService">
@@ -70,11 +75,17 @@
 	<bean name="pasteService" class="cn.com.service.PasteService">
 		<property name="pasteDao" ref="pasteDao"></property>
 	</bean>
+	<bean name="answerService" class="cn.com.service.AnswerService">
+		<property name="answerDao" ref="answerDao"></property>
+	</bean>
 	<!-- 配置Dao -->
 	<bean name="userDao" class="cn.com.dao.UserDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean name="pasteDao" class="cn.com.dao.PasteDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="answerDao" class="cn.com.dao.AnswerDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 </beans>

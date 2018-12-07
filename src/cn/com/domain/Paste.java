@@ -13,6 +13,7 @@ public class Paste {
 	private Integer glanceover;
 	private Integer solve;
 	private Integer isdelete;
+	private String answerid;
 	private User user;
 	private Set<User> userAnswerSet = new HashSet<User>();
 	public String getId() {
@@ -31,7 +32,7 @@ public class Paste {
 		return content;
 	}
 	public void setContent(String content) {
-		this.content = content;
+		this.content = content.replaceAll("<br/>", ".");
 	}
 	public Integer getOffer() {
 		return offer;
@@ -68,6 +69,12 @@ public class Paste {
 	}
 	public void setIsdelete(Integer isdelete) {
 		this.isdelete = isdelete;
+	}
+	public String getAnswerid() {
+		return answerid;
+	}
+	public void setAnswerid(String answerid) {
+		this.answerid = answerid;
 	}
 	public User getUser() {
 		return user;
