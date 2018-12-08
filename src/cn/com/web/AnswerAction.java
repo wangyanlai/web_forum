@@ -20,12 +20,14 @@ public class AnswerAction extends ActionSupport implements ModelDriven<Answer>{
 	private PasteService pasteService;
 	private String pasteid;
 	private String answerid;
+	//É¾³ý»Ø¸´
 	public String deleteAnswer() throws Exception {
 		Paste paste = pasteService.findPasteByIdReturnPaste(pasteid);
 		answerService.deleteAnswerById(answerid,paste);
 		ActionContext.getContext().put("pasteid", pasteid);
 		return "toDetail";
 	}
+	//Ìí¼Ó»Ø¸´
 	public String addAnswer() throws Exception {
 		User user = (User) ActionContext.getContext().getSession().get("user");
 		if(user == null) {

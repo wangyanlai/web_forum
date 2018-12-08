@@ -39,7 +39,7 @@ public class PasteDao extends HibernateDaoSupport{
 		query.addEntity(Paste.class);
 		query.setParameter(1, start);
 		query.setParameter(2, pageSize);
-		List list = query.list();
+		List<Paste> list = query.list();
 		return list;
 	}
 	//得到最近热帖
@@ -48,7 +48,7 @@ public class PasteDao extends HibernateDaoSupport{
 		String sql = "select * from paste order by glanceover desc limit 0,8";
 		NativeQuery query = session.createSQLQuery(sql);
 		query.addEntity(Paste.class);
-		List list = query.list();
+		List<Paste> list = query.list();
 		return list;
 	}
 	//得到最近热议
@@ -57,7 +57,7 @@ public class PasteDao extends HibernateDaoSupport{
 		String sql = "select * from paste order by ansnum desc limit 0,8";
 		NativeQuery query = session.createSQLQuery(sql);
 		query.addEntity(Paste.class);
-		List list = query.list();
+		List<Paste> list = query.list();
 		return list;
 	}
 	//得到帖子详情

@@ -37,5 +37,12 @@
 				<param name="pasteid">${pasteid}</param>
 			</result>
 		</action>
+		<action name="PraiseAction_*" class="cn.com.web.PraiseAction" method="{1}">
+			<result name="error">/login.jsp</result>
+			<result name="toDetail" type="redirectAction">
+				<param name="actionName">PasteAction_getDetail</param>
+				<param name="pasteid">${pasteid}</param>
+			</result>
+		</action>
 	</package>
 </struts>

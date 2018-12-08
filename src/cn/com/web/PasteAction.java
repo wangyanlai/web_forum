@@ -39,6 +39,7 @@ public class PasteAction extends ActionSupport implements ModelDriven<Paste>{
 		pasteService.addPaste(paste);
 		return "toIndex";
 	}
+	//½â¾öÌû×Ó
 	public String solvePaste() throws Exception {
 		pasteService.solvePasteByIdAndAnswerid(pasteid,paste.getAnswerid());
 		ActionContext.getContext().put("pasteid", pasteid);

@@ -74,36 +74,6 @@
 					<div class="fly-panel detail-box" style="padding-top: 0;">
 						<a name="comment"></a>
 						<ul class="jieda photos" id="jieda">
-							<!-- <li data-id="12" class="jieda-daan">
-								<a name="item-121212121212"></a>
-								<div class="detail-about detail-about-reply">
-									<a class="jie-user" href="">
-										<img src="res/images/uer.jpg" alt="">
-										<cite>
-											<i>纸飞机</i>
-											<em>(楼主)</em>
-	                  						<em style="color:#5FB878">(管理员)</em>
-										</cite>
-									</a>
-									<div class="detail-hits">
-										<span>3分钟前</span>
-									</div>
-									<i class="iconfont icon-caina" title="最佳答案"></i>
-								</div>
-								<div class="detail-body jieda-body">
-									<p>么么哒</p>
-								</div>
-								<div class="jieda-reply">
-									<span class="jieda-zan zanok" type="zan">
-										<i class="iconfont icon-zan"></i>
-										<em>12</em>
-									</span>
-									<div class="jieda-admin">
-						                <span type="del">删除</span>
-						                <span class="jieda-accept" type="accept">采纳</span>
-						            </div> 
-								</div>
-							</li>   -->
 							<s:iterator value="#answerList" var="answer">
 								<li data-id="13">
 									<a name="item-121212121212"></a>
@@ -113,27 +83,33 @@
 											<cite>
 												<i><s:property value="#answer.user.username"/></i>
 												<em style="color: #FF9E3F">活雷锋</em>
+												<!-- <em style="color:#5FB878">(管理员)</em> -->
 											</cite>
 										</a>
 										<div class="detail-hits">
 											<span><s:property value="#answer.anstime"/></span>
 										</div>
+										<s:if test="#paste.answerid == #answer.id">
+											<i class="iconfont icon-caina" title="最佳答案"></i>
+										</s:if>
 									</div>
 									<div class="detail-body jieda-body">
 										<p><s:property value="#answer.content"/></p>
 									</div>
 									<div class="jieda-reply">
-										<span class="jieda-zan" type="zan">
-											<i class="iconfont icon-zan"></i>
-											<em><s:property value="#answer.agree"/></em>
-										</span>
+										<a href="${pageContext.request.contextPath }/PraiseAction_addPraise?answerid=<s:property value='#answer.id'/>&pasteid=<s:property value='#paste.id'/>">
+											<span class="jieda-zan" type="zan">
+												<i class="iconfont icon-zan"></i>
+												<em><s:property value="#answer.agree"/></em>
+											</span>
+										</a>
 										<div class="jieda-admin">
-											<s:if test="#session.user.username == #answer.user.username">
+											<s:if test="#session.user.username == #answer.user.username && #paste.answerid != #answer.id">
 												<span type="del">
 													<a href="${pageContext.request.contextPath }/AnswerAction_deleteAnswer?answerid=<s:property value="#answer.id"/>&pasteid=<s:property value="#paste.id"/>" class="layui-btn layui-btn-danger layui-btn-small">删除</a>
 												</span>
 											</s:if>
-											<s:if test="#session.user.username == #paste.user.username">
+											<s:if test="#session.user.username == #paste.user.username && #paste.solve == 0">
 												<span class="jieda-accept" type="accept">
 													<a href="${pageContext.request.contextPath }/PasteAction_solvePaste?answerid=<s:property value="#answer.id"/>&pasteid=<s:property value="#paste.id"/>" class="layui-btn  layui-btn-small">采纳</a>
 												</span>

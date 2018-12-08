@@ -68,15 +68,24 @@
 		<property name="answerService" ref="answerService"></property>
 		<property name="pasteService" ref="pasteService"></property>
 	</bean>
+	<bean name="praiseAction" class="cn.com.web.PraiseAction" scope="prototype">
+		<property name="answerService" ref="answerService"></property>
+		<property name="praiseService" ref="praiseService"></property>
+	</bean>
 	<!-- 配置Service -->
 	<bean name="userService" class="cn.com.service.UserService">
 		<property name="userDao" ref="userDao"></property>
 	</bean>
 	<bean name="pasteService" class="cn.com.service.PasteService">
 		<property name="pasteDao" ref="pasteDao"></property>
+		<property name="answerDao" ref="answerDao"></property>
 	</bean>
 	<bean name="answerService" class="cn.com.service.AnswerService">
 		<property name="answerDao" ref="answerDao"></property>
+		<property name="pasteDao" ref="pasteDao"></property>
+	</bean>
+	<bean name="praiseService" class="cn.com.service.PraiseService">
+		<property name="praiseDao" ref="praiseDao"></property>
 	</bean>
 	<!-- 配置Dao -->
 	<bean name="userDao" class="cn.com.dao.UserDao">
@@ -86,6 +95,9 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean name="answerDao" class="cn.com.dao.AnswerDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="praiseDao" class="cn.com.dao.PraiseDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 </beans>

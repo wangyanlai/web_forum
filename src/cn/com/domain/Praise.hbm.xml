@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.com.domain">
+	<!-- 类名 对应的 表名 -->
+	<class name="Praise" table="praise">
+		<!-- 联合主键的名字            联合主键的类 -->
+		<composite-id name="primaryKey" class="cn.com.utils.PrimaryKey">
+			<!-- primaryKey中的属性       对应的数据库中表的列                  属性对应的类-->
+			<key-many-to-one name="user" column="userid" class="User"></key-many-to-one>
+			<key-many-to-one name="answer" column="answerid" class="Answer"></key-many-to-one>
+		</composite-id>
+	</class>
+</hibernate-mapping>    
